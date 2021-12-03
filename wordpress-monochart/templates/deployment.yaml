@@ -41,62 +41,62 @@ spec:
             - name: WORDPRESS_DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: db_host
             - name: WORDPRESS_DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: db_name
             - name: WORDPRESS_DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: db_user
             - name: WORDPRESS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: db_password
             - name: WORDPRESS_AUTH_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: auth_key
             - name: WORDPRESS_SECURE_AUTH_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: secure_auth_key
             - name: WORDPRESS_LOGGED_IN_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: logged_in_key
             - name: WORDPRESS_NONCE_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: nonce_key
             - name: WORDPRESS_AUTH_SALT
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: auth_salt
             - name: WORDPRESS_SECURE_AUTH_SALT
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: secure_auth_salt
             - name: WORDPRESS_LOGGED_IN_SALT
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: logged_in_salt
             - name: WORDPRESS_NONCE_SALT
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "benzinga-gen-wordpress.fullname" . }}
+                  name: {{ include "b-wordpress.fullname" . }}
                   key: nonce_salt
           ports:
             - name: http
