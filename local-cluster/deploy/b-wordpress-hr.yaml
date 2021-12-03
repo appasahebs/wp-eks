@@ -1,0 +1,86 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: b-wordpress
+  namespace: default
+spec:
+  releaseName: b-wordpress
+  chart:
+    git: https://github.com/appasahebs/wp-eks.git
+    ref: master
+    path: wordpress-monochart
+  values:
+    # Default values for b-wordpress.
+    # This is a YAML-formatted file.
+    # Declare variables to be passed into your templates.
+    #
+    # helm upgrade b-wordpress charts/wordpress-monochart -f kubernetes/staging/core-staging/b-wordpress/b-wordpress.yaml --namespace core-staging
+
+    replicaCount: 1
+
+    namespace: default
+
+    image:
+      repository: nginx
+      tag: latest
+      pullPolicy: IfNotPresent
+
+    podAnnotations: {}
+
+    nameOverride: ""
+    fullnameOverride: ""
+
+    service:
+      type: ClusterIP
+      port: 80
+      annotations: {}
+
+    ingress:
+      enabled: true
+      className: ""
+      annotations: {}
+        # kubernetes.io/ingress.class: nginx
+        # kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: app-example.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls: []
+      #  - secretName: chart-example-tls
+      #    hosts:
+      #      - chart-example.local
+
+    env:
+      WP_HOME: "https://money.zingbot.bz"
+      WP_SITEURL: "https://money.zingbot.bz"
+      MONEY_TOOLS_URL: "https://tools.money.zingbot.bz"
+
+    secrets:
+      db_host: ""
+      db_name: ""
+      db_user: ""
+      db_password: ""
+      auth_key: ""
+      secure_auth_key: ""
+      logged_in_key: ""
+      nonce_key: ""
+      auth_salt: ""
+      secure_auth_salt: ""
+      logged_in_salt: ""
+      nonce_salt: ""
+
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 5m
+        memory: 100Mi
+
+    nodeSelector: {}
+
+    tolerations: []
+
+    affinity: {}
