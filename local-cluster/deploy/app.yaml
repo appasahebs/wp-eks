@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: app
-  namespace: core-staging
+  namespace: default
 spec:
   releaseName: app
   chart:
