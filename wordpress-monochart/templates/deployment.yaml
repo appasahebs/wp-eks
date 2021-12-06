@@ -98,6 +98,10 @@ spec:
                 secretKeyRef:
                   name: b-wordpress
                   key: nonce_salt
+          envFrom:
+          - configMapRef:
+            name: {{ include "wordpress-monochart.fullname" . }}
+
           ports:
             - name: http
               containerPort: 80

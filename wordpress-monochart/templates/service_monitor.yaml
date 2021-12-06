@@ -1,0 +1,22 @@
+{{ if .Values.metrics.serviceMonitor.enabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "wordpress-monochart.fullname" . }}
+  labels:
+    app: {{ include "wordpress-monochart.name" . }}
+    app.kubernetes.io/name: {{ include "wordpress-monochart.name" . }}
+    helm.sh/chart: {{ include "wordpress-monochart.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "wordpress-monochart.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  endpoints:
+  - port: http           # works for different port numbers as long as the name matches
+    interval: {{ .Values.metrics.serviceMonitor.scrapeInterval }}        # scrape the endpoint every 10 seconds
+---
+{{ end }}

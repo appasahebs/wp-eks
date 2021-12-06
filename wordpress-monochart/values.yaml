@@ -28,6 +28,11 @@ podAnnotations:
   prometheus.io/port: "9000"
   prometheus.io/scrape: "false"
 
+metrics:
+  serviceMonitor:
+    enabled: true
+    scrapeInterval: 10s
+
 podSecurityContext: {}
   # fsGroup: 2000
 
