@@ -28,6 +28,11 @@ spec:
 
     podAnnotations: {}
 
+    metrics:
+      serviceMonitor:
+        enabled: true
+        scrapeInterval: 10s
+        
     nameOverride: ""
     fullnameOverride: ""
 
